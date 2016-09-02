@@ -1,0 +1,31 @@
+{
+  "name": "loopback-jwt-simple",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tonghuiquanqiu/loopback-jwt-simple.git"
+  },
+  "keywords": [
+    "loopback"
+  ],
+  "author": "yangjun@tonghuiquanqiu.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tonghuiquanqiu/loopback-jwt-simple/issues"
+  },
+  "homepage": "https://github.com/tonghuiquanqiu/loopback-jwt-simple#readme",
+  "dependencies": {
+    "assert": "^1.4.1",
+    "async": "^2.0.1",
+    "jwt-simple": "^0.5.0",
+    "strong-globalize": "^2.6.9"
+  },
+  "devDependencies": {
+    "debug": "^2.2.0"
+  }
+}
