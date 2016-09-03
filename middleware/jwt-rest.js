@@ -183,16 +183,20 @@ function jwtToken(options) {
 
     // JWT....
     var tokenId = tokenForRequest(req, options);
-    try {
-      var decodedToken = jwt.decode(tokenId, secret);
-      req.accessToken = decodedToken || null;
-      rewriteUserLiteral(req, currentUserLiteral);
-      var ctx = req.loopbackContext;
-      if (ctx && ctx.active) ctx.set('accessToken', decodedToken);
+    if (tokenId) {
+      try {
+        var decodedToken = jwt.decode(tokenId, secret);
+        req.accessToken = decodedToken || null;
+        rewriteUserLiteral(req, currentUserLiteral);
+        var ctx = req.loopbackContext;
+        if (ctx && ctx.active) ctx.set('accessToken', decodedToken);
+        next(null);
+      }
+      catch (e) {
+        next(e);
+      }
+    } else {
       next(null);
-    }
-    catch (e) {
-      next(e)
     }
   };
 }
