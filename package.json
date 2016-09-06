@@ -1,6 +1,6 @@
 {
   "name": "loopback-jwt-simple",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -23,7 +23,8 @@
     "assert": "^1.4.1",
     "async": "^2.0.1",
     "jwt-simple": "^0.5.0",
-    "strong-globalize": "^2.6.9"
+    "strong-globalize": "^2.6.9",
+    "strong-remoting": "^2.31.0"
   },
   "devDependencies": {
     "debug": "^2.2.0"
