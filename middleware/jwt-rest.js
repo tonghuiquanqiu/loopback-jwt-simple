@@ -164,7 +164,6 @@ function jwtToken(options) {
   return function(req, res, next) {
     var app = req.app;
     var registry = app.registry;
-
     if (req.accessToken !== undefined) {
       if (!enableDoublecheck) {
         // req.accessToken is defined already (might also be "null" or "false") and enableDoublecheck
@@ -193,7 +192,10 @@ function jwtToken(options) {
         next(null);
       }
       catch (e) {
-        next(e);
+        var ee = new Error(g.f('Invalid Access Token'));
+        ee.status = ee.statusCode = 401;
+        ee.code = 'INVALID_TOKEN';
+        next(ee);
       }
     } else {
       next(null);

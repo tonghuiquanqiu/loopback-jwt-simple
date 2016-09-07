@@ -1,6 +1,6 @@
 {
   "name": "loopback-jwt-simple",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -27,6 +27,14 @@
     "strong-remoting": "^2.31.0"
   },
   "devDependencies": {
-    "debug": "^2.2.0"
+    "debug": "^2.2.0",
+    "loopback": "^2.32.0",
+    "mocha": "^3.0.2",
+    "should": "^11.1.0",
+    "should-sinon": "^0.0.5",
+    "sinon": "^1.17.5",
+    "superagent-defaults": "^0.1.14",
+    "supertest": "^2.0.0",
+    "underscore": "^1.8.3"
   }
 }
