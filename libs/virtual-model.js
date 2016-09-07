@@ -178,7 +178,7 @@ module.exports = function(registry) {
    */
 
   Model.checkAccess = function(token, modelId, sharedMethod, ctx, callback) {
-    callback(null, token.userId === modelId.toString());
+    callback(null, token && token.userId && token.userId === modelId.toString());
   };
 
   /**
