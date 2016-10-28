@@ -178,8 +178,39 @@ module.exports = function(registry) {
    */
 
   Model.checkAccess = function(token, modelId, sharedMethod, ctx, callback) {
-    callback(null, token && token.userId && token.userId === modelId.toString());
+    if(token && token.userId && token.userId === modelId.toString())
+    {
+      return callback(null,true);
+    }
+
+   var ANONYMOUS = registry.getModel('AccessToken').ANONYMOUS;
+    token = token || ANONYMOUS;
+    var aclModel = Model._ACL();
+
+    ctx = ctx || {};
+    if (typeof ctx === 'function' && callback === undefined) {
+      callback = ctx;
+      ctx = {};
+    }
+
+    aclModel.checkAccessForContext({
+      accessToken: token,
+      model: this,
+      property: sharedMethod.name,
+      method: sharedMethod.name,
+      sharedMethod: sharedMethod,
+      modelId: modelId,
+      accessType: this._getAccessTypeForMethod(sharedMethod),
+      remotingContext: ctx
+    }, function(err, accessRequest) {
+      if (err) return callback(err);
+      callback(null, accessRequest.isAllowed());
+    });
+
+
   };
+
+
 
   /**
    * Get the `Application` object to which the Model is attached.
