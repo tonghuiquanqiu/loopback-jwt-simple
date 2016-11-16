@@ -178,7 +178,7 @@ module.exports = function(registry) {
    */
 
   Model.checkAccess = function(token, modelId, sharedMethod, ctx, callback) {
-    if(token && token.userId && token.userId === modelId.toString())
+    if(token && token.userId && modelId && token.userId === modelId.toString())
     {
       return callback(null,true);
     }
